@@ -53,9 +53,9 @@ def attackPlayer(attacker, target):
     else:
         damage = attacker["damage"]
 
-    # Updatenya
-    setPlayer(attacker, "score", attacker["score"] + (0.8 if target["defense"] else 1))
-    setPlayer(target, "health", target["health"] - damage)
+    attackScore = round(attacker["score"] + 1 - 1 / target["defensePower"] if target['defense'] else 1, 2)
+    setPlayer(attacker, "score", attackScore)
+    setPlayer(target, "health", target["health"] - damage )
     setPlayer(target, "defense", False)
 
 
